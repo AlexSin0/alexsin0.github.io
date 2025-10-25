@@ -1,11 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import { ProjectCard } from "@/components/ProjectCard";
 ---
 
 <Layout>
-	<Welcome />
+  <div class="inline-block min-h-screen px-12 pt-[30vh]">
+    <h1 class="text-2xl">Personal projects showcase</h1>
+    <div class="relative text-8xl font-semibold uppercase">
+      <div class="relative z-10">Oleksandr</div>
+      <div class="text-secondary absolute top-4 left-6 z-0">Alexander</div>
+      <div class="relative left-8 my-1">Synelnikov</div>
+    </div>
+    <div class="relative left-18 mt-12 text-xl">
+      <div class="text-2xl">Software Engineer</div>
+      <div class="">Based in Riga, Latvia</div>
+    </div>
+  </div>
+  <div class="h-[30vh]"></div>
+  <div class="flex flex-col items-center gap-8">
+    <ProjectCard />
+    <ProjectCard />
+    <ProjectCard />
+  </div>
 </Layout>
