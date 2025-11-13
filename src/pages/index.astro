@@ -1,8 +1,25 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import { ProjectCard } from "@/components/ProjectCard";
+import {
+  ProjectBadges,
+  ProjectContent,
+  ProjectCard,
+  ProjectTech,
+} from "@/components/ProjectCard";
 import Background from "@/components/Background";
+import {
+  OnlineDemo,
+  SourceCode,
+  ReadMore,
+  DownloadableDemo,
+  UnderDevelopment,
+  LaravelBadge,
+  ReactBadge,
+  NextJsBadge,
+  GodotBadge,
+} from "@/components/Badges";
+import { X } from "lucide-react";
 ---
 
 <Layout>
@@ -23,8 +40,58 @@ import Background from "@/components/Background";
   <div class="h-[30vh]"></div>
   <div class="relative z-10 flex flex-col items-center gap-8">
     <Background className="absolute -z-10" />
-    <ProjectCard />
-    <ProjectCard />
-    <ProjectCard />
+    <ProjectCard title="Republic courses" client:idle>
+      <ProjectTech>
+        <LaravelBadge />
+        <X strokeWidth={2} size={16} />
+        <ReactBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+          doloremque alias aspernatur? Consectetur repudiandae excepturi ab
+          blanditiis ut, accusamus quod, est veniam, nulla rem in ex quia quam
+          non eius!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam in
+          iusto, saepe voluptatibus deserunt ipsa commodi, fugit corporis ut
+          culpa, quaerat quibusdam? Qui aperiam laboriosam asperiores dolor
+          alias facilis tenetur. Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Praesentium est beatae magni nesciunt, ducimus
+          perferendis quae optio ea inventore reprehenderit minima repudiandae.
+          Iste recusandae rerum nihil assumenda ut, exercitationem quo.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <UnderDevelopment client:load />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Autonomous devices" isStarred client:idle>
+      <ProjectTech>
+        <NextJsBadge />
+        <X strokeWidth={2} size={16} />
+        <GodotBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+          doloremque alias aspernatur? Consectetur repudiandae excepturi ab
+          blanditiis ut, accusamus quod, est veniam, nulla rem in ex quia quam
+          non eius!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium
+          maiores necessitatibus, provident sit enim quod quisquam quam
+          consectetur impedit tempora quos fugit accusamus nam hic. Corrupti
+          neque quia voluptas natus?
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <OnlineDemo href="aaa" />
+        <SourceCode href="bbb" />
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
   </div>
 </Layout>
