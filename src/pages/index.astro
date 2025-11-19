@@ -18,13 +18,19 @@ import {
   ReactBadge,
   NextJsBadge,
   GodotBadge,
+  ViteBadge,
+  ThreeJsBadge,
 } from "@/components/Badges";
 import { X } from "lucide-react";
+import SpaceCenter from "@/components/SpaceCenter.astro";
 ---
 
 <Layout>
+  <div class="fixed top-0 -z-0">
+    <SpaceCenter />
+  </div>
   <div class="inline-block min-h-screen px-12 pt-[30vh]">
-    <h1 class="text-2xl">Personal projects showcase</h1>
+    <h1 class="relative z-10 text-2xl">Personal projects showcase</h1>
     <div class="relative text-8xl font-semibold uppercase">
       <div class="relative z-10">Oleksandr</div>
       <div class="text-secondary absolute top-4 left-6 z-0 select-none">
@@ -37,9 +43,9 @@ import { X } from "lucide-react";
       <div class="">Based in Riga, Latvia</div>
     </div>
   </div>
-  <div class="h-[30vh]"></div>
-  <div class="relative z-10 flex flex-col items-center gap-8">
-    <Background className="absolute -z-10" />
+  <div class="h-[150vh]"></div>
+  <div class="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-6">
+    <!-- <Background className="absolute -z-10" /> -->
     <ProjectCard title="Republic courses" client:idle>
       <ProjectTech>
         <LaravelBadge />
@@ -48,26 +54,22 @@ import { X } from "lucide-react";
       </ProjectTech>
       <ProjectContent>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-          doloremque alias aspernatur? Consectetur repudiandae excepturi ab
-          blanditiis ut, accusamus quod, est veniam, nulla rem in ex quia quam
-          non eius!
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam in
-          iusto, saepe voluptatibus deserunt ipsa commodi, fugit corporis ut
-          culpa, quaerat quibusdam? Qui aperiam laboriosam asperiores dolor
-          alias facilis tenetur. Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Praesentium est beatae magni nesciunt, ducimus
-          perferendis quae optio ea inventore reprehenderit minima repudiandae.
-          Iste recusandae rerum nihil assumenda ut, exercitationem quo.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
         </p>
       </ProjectContent>
       <ProjectBadges>
         <UnderDevelopment client:load />
       </ProjectBadges>
     </ProjectCard>
-    <ProjectCard title="Autonomous devices" isStarred client:idle>
+    <h2
+      class="mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent py-1 text-center font-mono text-4xl"
+    >
+      Late university projects
+    </h2>
+    <ProjectCard title="Autonomous devices" client:idle>
       <ProjectTech>
         <NextJsBadge />
         <X strokeWidth={2} size={16} />
@@ -75,23 +77,44 @@ import { X } from "lucide-react";
       </ProjectTech>
       <ProjectContent>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-          doloremque alias aspernatur? Consectetur repudiandae excepturi ab
-          blanditiis ut, accusamus quod, est veniam, nulla rem in ex quia quam
-          non eius!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
         </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Space center" isStarred client:idle>
+      <ProjectTech>
+        <ThreeJsBadge />
+        <X strokeWidth={2} size={16} />
+        <ViteBadge />
+      </ProjectTech>
+      <ProjectContent>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium
-          maiores necessitatibus, provident sit enim quod quisquam quam
-          consectetur impedit tempora quos fugit accusamus nam hic. Corrupti
-          neque quia voluptas natus?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
         </p>
       </ProjectContent>
       <ProjectBadges>
         <OnlineDemo href="aaa" />
         <SourceCode href="bbb" />
-        <ReadMore href="ccc" />
       </ProjectBadges>
     </ProjectCard>
+    <h2
+      class="mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent py-1 text-center font-mono text-4xl"
+    >
+      Early university projects
+    </h2>
+    <h2
+      class="py12 mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent text-center font-mono text-4xl"
+    >
+      Pre university projects
+    </h2>
   </div>
 </Layout>

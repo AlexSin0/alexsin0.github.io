@@ -9,7 +9,7 @@ export function ProjectCard({
   ...props
 }: React.ComponentProps<"div"> & { title: string; isStarred?: boolean }) {
   return (
-    <Card className="mx-12 block w-full max-w-2xl rounded-2xl border-white/20 bg-gradient-to-b from-black/80 from-10% to-black/30 p-8 backdrop-blur-sm">
+    <Card className="block w-full rounded-2xl border-white/20 bg-gradient-to-b from-black/80 from-10% to-black/30 p-8 backdrop-blur-sm">
       <div className="flex justify-between">
         <div className="text-3xl">{title}</div>
         {isStarred && <Starred />}
