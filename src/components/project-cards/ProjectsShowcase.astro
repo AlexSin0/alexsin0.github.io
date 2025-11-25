@@ -1,0 +1,209 @@
+---
+import {
+  ProjectCard,
+  ProjectTech,
+  ProjectContent,
+  ProjectBadges,
+} from "./ProjectCard";
+import ProjectGroup from "./ProjectGroup.astro";
+import { X } from "lucide-react";
+import {
+  LaravelBadge,
+  ReactBadge,
+  UnderDevelopment,
+  NextJsBadge,
+  GodotBadge,
+  ReadMore,
+  ThreeJsBadge,
+  ViteBadge,
+  OnlineDemo,
+  SourceCode,
+  MongoDbBadge,
+  PhpBadge,
+  MySqlBadge,
+  TelegramBadge,
+  CSharpBadge,
+  WasmBadge,
+  UnityBadge,
+  MlapiBadge,
+  DownloadableDemo,
+} from "./Badges";
+---
+
+<div class="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-20">
+  <ProjectCard title="Republic courses" client:idle>
+    <ProjectTech>
+      <LaravelBadge />
+      <X strokeWidth={2} size={16} />
+      <ReactBadge />
+    </ProjectTech>
+    <ProjectContent>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+        dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+        adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+        quisquam ex.
+      </p>
+    </ProjectContent>
+    <ProjectBadges>
+      <UnderDevelopment client:load />
+    </ProjectBadges>
+  </ProjectCard>
+
+  <ProjectGroup name="Late university projects">
+    <ProjectCard title="Autonomous devices" client:idle>
+      <ProjectTech>
+        <NextJsBadge />
+        <X strokeWidth={2} size={16} />
+        <GodotBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Space center" isStarred client:idle>
+      <ProjectTech>
+        <ThreeJsBadge />
+        <X strokeWidth={2} size={16} />
+        <ViteBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <OnlineDemo href="aaa" />
+        <SourceCode href="bbb" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Epclon" client:idle>
+      <ProjectTech>
+        <NextJsBadge />
+        <X strokeWidth={2} size={16} />
+        <MongoDbBadge client:load />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <OnlineDemo href="aaa" />
+        <SourceCode href="bbb" />
+      </ProjectBadges>
+    </ProjectCard>
+  </ProjectGroup>
+
+  <ProjectGroup name="Early university projects">
+    <ProjectCard title="Weather B" client:idle>
+      <ProjectTech>
+        <PhpBadge />
+        <X strokeWidth={2} size={16} />
+        <MySqlBadge client:idle />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <OnlineDemo href="aaa" />
+        <SourceCode href="bbb" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Buburuza Bot" client:idle>
+      <ProjectTech>
+        <TelegramBadge />
+        <X strokeWidth={2} size={16} />
+        <CSharpBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Chained Dungeon" isStarred client:idle>
+      <ProjectTech>
+        <CSharpBadge />
+        <X strokeWidth={2} size={16} />
+        <WasmBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <OnlineDemo href="aaa" />
+        <SourceCode href="bbb" />
+      </ProjectBadges>
+    </ProjectCard>
+  </ProjectGroup>
+
+  <ProjectGroup name="Pre university projects">
+    <ProjectCard title="Frog Game" isStarred client:idle>
+      <ProjectTech>
+        <UnityBadge />
+        <X strokeWidth={2} size={16} />
+        <MlapiBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <DownloadableDemo href="" />
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
+    <ProjectCard title="Overflow" client:idle>
+      <ProjectTech>
+        <UnityBadge />
+      </ProjectTech>
+      <ProjectContent>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
+          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
+          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
+          quisquam ex.
+        </p>
+      </ProjectContent>
+      <ProjectBadges>
+        <ReadMore href="ccc" />
+      </ProjectBadges>
+    </ProjectCard>
+  </ProjectGroup>
+  <div></div>
+</div>

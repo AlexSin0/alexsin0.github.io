@@ -1,0 +1,14 @@
+---
+const { name } = Astro.props;
+---
+
+<div>
+  <h2
+    class="mx-2 my-8 border-b-2 bg-gradient-to-t from-black from-10% to-transparent py-1 text-center font-mono text-4xl"
+  >
+    {name}
+  </h2>
+  <div class="flex flex-col gap-12">
+    <slot />
+  </div>
+</div>

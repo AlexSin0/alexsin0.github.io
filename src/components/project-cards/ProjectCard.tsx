@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Star, X } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function ProjectCard({
   title,

@@ -1,0 +1,41 @@
+<script>
+  const typingElements = Array.from(
+    document.getElementsByClassName("typing")
+  ) as HTMLElement[];
+
+  const frameDelay = 20;
+  const scrambleChars = "#%@$*!";
+  const cyclesPerChar = 6;
+
+  typingElements.forEach(typingAnimation);
+
+  async function typingAnimation(element: HTMLElement) {
+    const text = element.textContent;
+    element.textContent = "";
+
+    for (let i = 0; i < text.length; i++) {
+      for (let cycle = 0; cycle < cyclesPerChar; cycle++) {
+        const rand =
+          scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        element.textContent = text.slice(0, i) + rand;
+        await new Promise((r) => setTimeout(r, frameDelay));
+      }
+      element.textContent = text.slice(0, i + 1);
+    }
+  }
+</script>
+
+<div class="inline-block min-h-screen px-12 pt-[30vh]">
+  <h1 class="fade-in relative z-10 text-2xl">Personal projects showcase</h1>
+  <div class="relative text-8xl font-semibold uppercase">
+    <div class="typing relative z-10">Oleksandr</div>
+    <div class="typing absolute top-4 left-6 z-0 text-gray-900 select-none">
+      Alexander
+    </div>
+    <div class="typing relative left-8 my-1">Synelnikov</div>
+  </div>
+  <div class="fade-in relative left-18 mt-12 text-xl">
+    <div class="text-2xl">Software Engineer</div>
+    <div class="">Based in Riga, Latvia</div>
+  </div>
+</div>

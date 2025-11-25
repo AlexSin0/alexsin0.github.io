@@ -1,120 +1,17 @@
 ---
 import "../styles/global.css";
+import "../styles/custom.css";
 import Layout from "../layouts/Layout.astro";
-import {
-  ProjectBadges,
-  ProjectContent,
-  ProjectCard,
-  ProjectTech,
-} from "@/components/ProjectCard";
-import Background from "@/components/Background";
-import {
-  OnlineDemo,
-  SourceCode,
-  ReadMore,
-  DownloadableDemo,
-  UnderDevelopment,
-  LaravelBadge,
-  ReactBadge,
-  NextJsBadge,
-  GodotBadge,
-  ViteBadge,
-  ThreeJsBadge,
-} from "@/components/Badges";
-import { X } from "lucide-react";
 import SpaceCenter from "@/components/SpaceCenter.astro";
+import Title from "@/components/Title.astro";
+import ProjectsShowcase from "@/components/project-cards/ProjectsShowcase.astro";
 ---
 
 <Layout>
   <div class="fixed top-0 -z-0">
     <SpaceCenter />
   </div>
-  <div class="inline-block min-h-screen px-12 pt-[30vh]">
-    <h1 class="relative z-10 text-2xl">Personal projects showcase</h1>
-    <div class="relative text-8xl font-semibold uppercase">
-      <div class="relative z-10">Oleksandr</div>
-      <div class="text-secondary absolute top-4 left-6 z-0 select-none">
-        Alexander
-      </div>
-      <div class="relative left-8 my-1">Synelnikov</div>
-    </div>
-    <div class="relative left-18 mt-12 text-xl">
-      <div class="text-2xl">Software Engineer</div>
-      <div class="">Based in Riga, Latvia</div>
-    </div>
-  </div>
+  <Title />
   <div class="h-[150vh]"></div>
-  <div class="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-6">
-    <!-- <Background className="absolute -z-10" /> -->
-    <ProjectCard title="Republic courses" client:idle>
-      <ProjectTech>
-        <LaravelBadge />
-        <X strokeWidth={2} size={16} />
-        <ReactBadge />
-      </ProjectTech>
-      <ProjectContent>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
-        </p>
-      </ProjectContent>
-      <ProjectBadges>
-        <UnderDevelopment client:load />
-      </ProjectBadges>
-    </ProjectCard>
-    <h2
-      class="mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent py-1 text-center font-mono text-4xl"
-    >
-      Late university projects
-    </h2>
-    <ProjectCard title="Autonomous devices" client:idle>
-      <ProjectTech>
-        <NextJsBadge />
-        <X strokeWidth={2} size={16} />
-        <GodotBadge />
-      </ProjectTech>
-      <ProjectContent>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
-        </p>
-      </ProjectContent>
-      <ProjectBadges>
-        <ReadMore href="ccc" />
-      </ProjectBadges>
-    </ProjectCard>
-    <ProjectCard title="Space center" isStarred client:idle>
-      <ProjectTech>
-        <ThreeJsBadge />
-        <X strokeWidth={2} size={16} />
-        <ViteBadge />
-      </ProjectTech>
-      <ProjectContent>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
-        </p>
-      </ProjectContent>
-      <ProjectBadges>
-        <OnlineDemo href="aaa" />
-        <SourceCode href="bbb" />
-      </ProjectBadges>
-    </ProjectCard>
-    <h2
-      class="mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent py-1 text-center font-mono text-4xl"
-    >
-      Early university projects
-    </h2>
-    <h2
-      class="py12 mx-2 border-b-2 bg-gradient-to-t from-black from-10% to-transparent text-center font-mono text-4xl"
-    >
-      Pre university projects
-    </h2>
-  </div>
+  <ProjectsShowcase />
 </Layout>

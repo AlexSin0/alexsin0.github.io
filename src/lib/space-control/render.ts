@@ -1,11 +1,9 @@
 import * as THREE from "three";
 import { Vector3 } from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import coastline from "./maps/coastline50.json";
 import { locationMarker, mapToVec3, Timer } from "./3d-utils";
 import { Satellite } from "./Satellite";
 import { EARTH_RADIUS, SCALE } from "./3d-utils";
-import { OBJLoader } from "three/examples/jsm/Addons.js";
+import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(30);
@@ -14,11 +12,11 @@ const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
 
 const loader = new OBJLoader();
-const rocketGroup = await loader.loadAsync("./models/rocket.obj");
+const rocketGroup = await loader.loadAsync("/models/rocket.obj");
 const rocketMesh = rocketGroup.children[0] as THREE.Mesh;
 rocketMesh.geometry.scale(0.6, 0.6, 0.6);
 
-const markerGroup = await loader.loadAsync("./models/star.obj");
+const markerGroup = await loader.loadAsync("/models/star.obj");
 const markerMesh = markerGroup.children[0] as THREE.Mesh;
 
 markerMesh.material = new THREE.MeshBasicMaterial({ color: "#F00" });
@@ -36,13 +34,6 @@ const satellites: Satellite[] = [
     rocketMesh.clone(),
     "#FA0",
   ),
-  // new Satellite(
-  //   "Probe-2",
-  //   new Vector3(8, 1, 1),
-  //   new Vector3(0.0, 0.0, 0.03),
-  //   rocketMesh.clone(),
-  //   "#F0C",
-  // ),
 ];
 
 function lookAtEarthPoint(lat: number, lon: number, zoom: number) {
@@ -66,12 +57,14 @@ function setLookAtEarthPointScroll(t = 0) {
   else
     lookAtEarthPoint(
       40, // lerp(40, 40 + 360, t) % 360,
-      lerp(40, 40 + 360, (t - 2) / 8) % 360,
+      lerp(40, 40 + 360, (t - 2) / 4) % 360,
       7,
     );
 }
 
 function setup(renderer: THREE.WebGLRenderer) {
+  console.log("Scene setup");
+
   setLookAtEarthPointScroll();
   blueMarble();
 
@@ -86,14 +79,11 @@ function setup(renderer: THREE.WebGLRenderer) {
   // const controls = new OrbitControls(camera, renderer.domElement);
   // controls.update();
   // controls.minDistance = EARTH_RADIUS + 0.1;
-
-  // const gridHelper = new THREE.GridHelper(50, 10);
-  // const axesHelper = new THREE.AxesHelper(16);
-  // scene.add(gridHelper, axesHelper);
 }
 
 function update(time: number, deltaTime: number) {
-  // console.log(deltaTime);
+  scrollUpdate();
+
   satellites.forEach((sat) => sat.sim(2.5));
   satellites.forEach((sat) =>
     sat.mesh.setRotationFromQuaternion(
@@ -125,29 +115,33 @@ function blueMarble() {
   const baseMesh = new THREE.Mesh(baseGeom, baseMat);
   scene.add(baseMesh);
 
-  const lines = coastline.features.map((feature) => {
-    const cords = feature.geometry.coordinates;
-    const path = cords.map((point) =>
-      mapToVec3(point[1], point[0], EARTH_RADIUS),
-    );
-    const geometry = new THREE.BufferGeometry().setFromPoints(path);
-    const line = new THREE.Line(geometry, lineMat);
-    return line;
+  import("./maps/coastline50.json").then((coastline) => {
+    const lines = coastline.features.map((feature) => {
+      const cords = feature.geometry.coordinates;
+      const path = cords.map((point) =>
+        mapToVec3(point[1], point[0], EARTH_RADIUS),
+      );
+      const geometry = new THREE.BufferGeometry().setFromPoints(path);
+      const line = new THREE.Line(geometry, lineMat);
+      return line;
+    });
+
+    scene.add(...lines);
+
+    console.log("Coastline drawn");
   });
-  scene.add(...lines);
 }
 
-let lastT = 0;
-function onScroll() {
+let lastScrollT = 0;
+function scrollUpdate() {
   const t = window.scrollY / window.innerHeight;
-  // console.log(t);
-
-  lastT = lerp(lastT, t, 0.5); // smooth
-  setLookAtEarthPointScroll(lastT);
+  setLookAtEarthPointScroll(t);
 }
 
 export function initRender(canvas: HTMLCanvasElement) {
-  const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+  console.log("Innit render");
+
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
 
   function resizeCanvas() {
@@ -159,8 +153,6 @@ export function initRender(canvas: HTMLCanvasElement) {
 
   window.addEventListener("resize", resizeCanvas, false);
   resizeCanvas();
-
-  window.addEventListener("scroll", onScroll, false);
 
   let lastTime = 0;
   let deltaTime = 0;
