@@ -4,9 +4,10 @@ import {
   ProjectTech,
   ProjectContent,
   ProjectBadges,
+  ProjectPictures,
 } from "./ProjectCard";
 import ProjectGroup from "./ProjectGroup.astro";
-import { X } from "lucide-react";
+import { Ellipsis, X } from "lucide-react";
 import {
   LaravelBadge,
   ReactBadge,
@@ -28,10 +29,16 @@ import {
   MlapiBadge,
   DownloadableDemo,
 } from "./Badges";
+import Picture from "../Picture";
+import TextModal from "../TextModal";
 ---
 
 <div class="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-20">
-  <ProjectCard title="Republic courses" client:idle>
+  <ProjectCard
+    title="Republic courses"
+    desc="Platform for online courses"
+    client:idle
+  >
     <ProjectTech>
       <LaravelBadge />
       <X strokeWidth={2} size={16} />
@@ -39,10 +46,17 @@ import {
     </ProjectTech>
     <ProjectContent>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-        dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-        adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-        quisquam ex.
+        This platform would be targeted at smaller teams and not big scale
+        organizations like universities, providing clients with simple tools to
+        create their interactive learning experiences.
+      </p><p>
+        Platform will help clients not only host online courses but also market
+        them to end-clients, hosting landing pages that could be made entirely
+        with built-in redactor, supporting custom domains.
+      </p><p>
+        During last few years I was asked to create a dedicated platform for
+        online courses a couple of times already, which is not a lot, but it's
+        weird that it happened twice.
       </p>
     </ProjectContent>
     <ProjectBadges>
@@ -51,157 +65,257 @@ import {
   </ProjectCard>
 
   <ProjectGroup name="Late university projects">
-    <ProjectCard title="Autonomous devices" client:idle>
+    <ProjectCard
+      title="Autonomous devices"
+      desc="Management system"
+      client:idle
+    >
       <ProjectTech>
         <NextJsBadge />
         <X strokeWidth={2} size={16} />
         <GodotBadge />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/devs/dev-map.png" client:idle />
+          <Picture src="/images/devs/dev-orgs.png" client:idle />
+          <Picture src="/images/devs/mini-demo.webp" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          This project was basis for my bachelor thesis. For it I've got
+          extremely good grade, and my graduating committee was very pleased.
+          The main objective was to make architect the system to control
+          unspecified devices that do not have stable connection to the internet
+          or that are constantly offline.
+        </p><p>
+          Idea was to create subnets of devices that belonged to particular
+          organizations. Those subnets could be accessed only using dedicated
+          tokens by authorized operators. Tokens itself would serve as the main
+          part of offline asynchronous authentication system.
+        </p><p>
+          System like this could be used in various scenarios: municipal
+          management of city lighting systems, commercial control of autonomous
+          watering for farms and plantations, even military or humanitarian
+          applications.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <ReadMore href="ccc" />
+        <!-- <ReadMore /> -->
       </ProjectBadges>
     </ProjectCard>
-    <ProjectCard title="Space center" isStarred client:idle>
+
+    <ProjectCard
+      title="Space center"
+      desc="Orbital mechanics simulation"
+      isStarred
+      client:idle
+    >
       <ProjectTech>
         <ThreeJsBadge />
         <X strokeWidth={2} size={16} />
         <ViteBadge />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/space/space-start.png" client:idle />
+          <Picture src="/images/space/space-select.png" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          I always was a fan of space and playing a lot of games has taught me
+          some basics of orbital mechanics. At this moment I thought I could
+          make some form of software system for managing imaginary steatites.
+        </p><p>
+          All that came of this idea is a real time simulation of orbitals based
+          on classical mechanics. You could have guessed by now, that's what you
+          are looking at in the background, if everything ended up loading
+          correctly that is.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <OnlineDemo href="aaa" />
-        <SourceCode href="bbb" />
+        <OnlineDemo href="https://alexsin0.github.io/space-center/" />
+        <SourceCode href="https://github.com/AlexSin0/space-center" />
+        <!-- <ReadMore href="ccc" /> -->
       </ProjectBadges>
     </ProjectCard>
-    <ProjectCard title="Epclon" client:idle>
+
+    <ProjectCard title="Epclon" desc="Hardware e-shop" client:idle>
       <ProjectTech>
         <NextJsBadge />
         <X strokeWidth={2} size={16} />
         <MongoDbBadge client:load />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/epc/epc-catalog.png" client:idle />
+          <Picture src="/images/epc/epc-cart.png" client:idle />
+          <Picture src="/images/epc/epc-profile.png" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          Epclon was conducted as a group project (some may call it an
+          international effort). Lots of documentation was written, diagrams
+          were built, we even played some planning poker. We used kanban board
+          and we had our own scrum-master, I was designated the role of
+          Architect and de facto was a lead developer in our mock organization.
+        </p><p>
+          We built Epclon as a real-life computer parts e-shop with all
+          necessary functionality: parts catalogue, filters, dedicated component
+          pages, cart, personal profile, payment API and OAuth 2.0
+          authorization.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <OnlineDemo href="aaa" />
-        <SourceCode href="bbb" />
+        <OnlineDemo
+          href="https://epclon-991837129090.europe-north1.run.app/catalog"
+        />
+        <!-- <SourceCode href="https://github.com/AlexSin0/epclon" /> -->
+        <!-- <ReadMore href="ccc" /> -->
       </ProjectBadges>
     </ProjectCard>
   </ProjectGroup>
 
   <ProjectGroup name="Early university projects">
-    <ProjectCard title="Weather B" client:idle>
+    <ProjectCard
+      title="Weather B"
+      desc="Minimalist forecast website"
+      client:idle
+    >
       <ProjectTech>
         <PhpBadge />
         <X strokeWidth={2} size={16} />
         <MySqlBadge client:idle />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/wb/wb-riga.png" client:idle />
+          <Picture src="/images/wb/wb-tokyo.png" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          A simple weather forecast website that works on top of Open Weather
+          Map API, originally started this project as part of my web systems
+          curriculum where I learned basics of PHP. It was the first technology
+          I learned of its kind and it kinda fascinated me, that's why I dived
+          deeper, creating first version of this page.
+        </p><p>
+          I used MySQL initially as an exercise on collecting user data, then
+          for cashing user search results. There's a lot of features that come
+          to mind when I think about this project. Right now, it's a simple
+          classical webpage based on vanilla PHP.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <OnlineDemo href="aaa" />
-        <SourceCode href="bbb" />
+        <OnlineDemo
+          href="https://weatherb-991837129090.europe-north1.run.app"
+        />
+        <SourceCode href="https://github.com/AlexSin0/WeatherB" />
       </ProjectBadges>
     </ProjectCard>
-    <ProjectCard title="Buburuza Bot" client:idle>
+
+    <ProjectCard
+      title="Buburuza Bot"
+      desc="Online courses inside of your messenger"
+      client:idle
+    >
       <ProjectTech>
         <TelegramBadge />
         <X strokeWidth={2} size={16} />
         <CSharpBadge />
       </ProjectTech>
       <ProjectContent>
+        <div class="mt-2 flex justify-between gap-2">
+          <Picture src="/images/bubu/screen1.jpg" client:idle />
+          <Picture src="/images/bubu/screen2.jpg" client:idle />
+          <Picture src="/images/bubu/screen3.jpg" client:idle />
+          <Picture src="/images/bubu/poster.jpg" client:idle />
+        </div>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          This project was created in collaboration with youth activist
+          organization. Originally, I was invited to join the team as technical
+          consultant for writing a free online course as part of a larger,
+          international project. At our first meeting I was tasked with choosing
+          the platform, so I made one instead.
+        </p><p>
+          In a bit more than a month I made a fully fledged platform that was
+          expected to support more than 50 students of our upcoming course.
+          Students were split into 4 groups, each designated to their own
+          lector. In total we gave 18 online lectures.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <ReadMore href="ccc" />
+        <!-- <ReadMore href="ccc" /> -->
       </ProjectBadges>
     </ProjectCard>
-    <ProjectCard title="Chained Dungeon" isStarred client:idle>
+
+    <ProjectCard
+      title="Chained Dungeon"
+      desc="Retro console game"
+      isStarred
+      client:idle
+    >
       <ProjectTech>
         <CSharpBadge />
         <X strokeWidth={2} size={16} />
         <WasmBadge />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/chained/help.png" client:idle />
+          <Picture src="/images/chained/peace.png" client:idle />
+          <Picture src="/images/chained/battle.png" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          I really really like this project. I made it for my first term project
+          at uni, also it was one of the last game related projects I actually
+          finished. For this project I've made a game engine, console rendering
+          and the game logic, also some miscellaneous systems from scratch,
+          using only standard libraries for console IO.
+        </p><p>
+          Revisiting this project I very much wanted to make it a Web game. It
+          was a struggle finding a way to compile an existent project to
+          WebAssembly, much harder then I expected. It's not on the GitHub yet,
+          but I'm working on it.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <OnlineDemo href="aaa" />
-        <SourceCode href="bbb" />
+        <OnlineDemo href="https://chained.netlify.app/" />
+        <SourceCode href="https://github.com/AlexSin0/Chained" />
+        <!-- <ReadMore href="ccc" /> -->
       </ProjectBadges>
     </ProjectCard>
   </ProjectGroup>
 
   <ProjectGroup name="Pre university projects">
-    <ProjectCard title="Frog Game" isStarred client:idle>
+    <ProjectCard
+      title="Frog Game"
+      desc="Multiplayer 2D action game"
+      isStarred
+      client:idle
+    >
       <ProjectTech>
         <UnityBadge />
         <X strokeWidth={2} size={16} />
         <MlapiBadge />
       </ProjectTech>
       <ProjectContent>
+        <ProjectPictures>
+          <Picture src="/images/frog/game.png" client:idle />
+          <Picture src="/images/frog/fight.png" client:idle />
+          <Picture src="/images/frog/redactor.png" client:idle />
+        </ProjectPictures>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
+          That was the last project I made before starting uni. I started
+          learning programming by making video games, and that was supposed to
+          be a video game with the most complex topic I could think at the time
+          - multiplayer networking.
+        </p><p>
+          I tried making multiplayer games since my first experience using
+          Unity, but those were one screen experiences at best. This was
+          supposed to be the real deal, my own game, so I could play it with my
+          friends online.
         </p>
       </ProjectContent>
       <ProjectBadges>
-        <DownloadableDemo href="" />
-        <ReadMore href="ccc" />
-      </ProjectBadges>
-    </ProjectCard>
-    <ProjectCard title="Overflow" client:idle>
-      <ProjectTech>
-        <UnityBadge />
-      </ProjectTech>
-      <ProjectContent>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque
-          dolore iste necessitatibus non minus magni soluta aut nobis, commodi
-          adipisci culpa iure voluptatibus animi tempore, corrupti, doloribus
-          quisquam ex.
-        </p>
-      </ProjectContent>
-      <ProjectBadges>
-        <ReadMore href="ccc" />
+        <!-- <DownloadableDemo href="" /> -->
+        <!-- <ReadMore href="ccc" /> -->
       </ProjectBadges>
     </ProjectCard>
   </ProjectGroup>

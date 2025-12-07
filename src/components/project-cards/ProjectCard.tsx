@@ -1,17 +1,25 @@
 import { Card } from "@/components/ui/card";
-import { Star, X } from "lucide-react";
+import { Ellipsis, Star, X } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function ProjectCard({
   title,
+  desc,
   isStarred,
   className,
   ...props
-}: React.ComponentProps<"div"> & { title: string; isStarred?: boolean }) {
+}: React.ComponentProps<"div"> & {
+  title: string;
+  desc: string;
+  isStarred?: boolean;
+}) {
   return (
     <Card className="block w-full rounded-2xl border-white/20 bg-gradient-to-b from-black/80 from-10% to-black/30 p-8 backdrop-blur-sm">
       <div className="flex justify-between">
-        <div className="text-3xl">{title}</div>
+        <div>
+          <div className="text-3xl">{title}</div>
+          <p className="-mt-1 text-sm font-normal text-neutral-400">{desc}</p>
+        </div>
         {isStarred && <Starred />}
       </div>
       <div {...props} />
@@ -24,9 +32,11 @@ export function ProjectContent({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className="mx-4 mt-3 mb-5 flex items-center gap-6 text-justify font-normal">
-      <div className="flex flex-col gap-4" {...props}></div>
-    </div>
+    <>
+      <div className="mx-4 mt-3 mb-5 flex items-center gap-6 text-justify font-normal">
+        <div className="flex flex-col gap-4" {...props}></div>
+      </div>
+    </>
   );
 }
 
@@ -42,8 +52,18 @@ export function ProjectTech({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className="-mt-2 flex items-center justify-start gap-1" {...props} />
+    <div
+      className="-m-0.5 mt-2 flex items-center justify-start gap-1"
+      {...props}
+    />
   );
+}
+
+export function ProjectPictures({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return <div className="mt-2 mb-0.5 flex justify-evenly gap-4" {...props} />;
 }
 
 export function Starred() {

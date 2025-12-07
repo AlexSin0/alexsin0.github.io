@@ -74,11 +74,6 @@ function setup(renderer: THREE.WebGLRenderer) {
       return v.mesh;
     }),
   );
-
-  // dev
-  // const controls = new OrbitControls(camera, renderer.domElement);
-  // controls.update();
-  // controls.minDistance = EARTH_RADIUS + 0.1;
 }
 
 function update(time: number, deltaTime: number) {
@@ -96,12 +91,10 @@ function update(time: number, deltaTime: number) {
 }
 
 function blueMarble() {
-  const lineMat = new THREE.LineBasicMaterial({ color: "#0F0" });
   const wireMat = new THREE.MeshBasicMaterial({
     color: "#035",
     wireframe: true,
   });
-
   const sphereGeom = new THREE.SphereGeometry(EARTH_RADIUS - 0.05);
   const sphereMesh = new THREE.Mesh(sphereGeom, wireMat);
   scene.add(sphereMesh);
@@ -114,6 +107,10 @@ function blueMarble() {
   const baseGeom = new THREE.SphereGeometry(EARTH_RADIUS - 0.1);
   const baseMesh = new THREE.Mesh(baseGeom, baseMat);
   scene.add(baseMesh);
+}
+
+function importCoastline(canvas: HTMLCanvasElement) {
+  const lineMat = new THREE.LineBasicMaterial({ color: "#0F0" });
 
   import("./maps/coastline50.json").then((coastline) => {
     const lines = coastline.features.map((feature) => {
@@ -128,7 +125,7 @@ function blueMarble() {
 
     scene.add(...lines);
 
-    console.log("Coastline drawn");
+    canvas.classList.add("fade-in");
   });
 }
 
@@ -140,6 +137,8 @@ function scrollUpdate() {
 
 export function initRender(canvas: HTMLCanvasElement) {
   console.log("Innit render");
+
+  canvas.classList.add("fade-in");
 
   const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -168,5 +167,7 @@ export function initRender(canvas: HTMLCanvasElement) {
   }
 
   setup(renderer);
+  importCoastline(canvas);
+
   animate(0);
 }
