@@ -112,9 +112,9 @@ function blueMarble() {
 function importCoastline(canvas: HTMLCanvasElement) {
   const lineMat = new THREE.LineBasicMaterial({ color: "#0F0" });
 
-  import("./maps/coastline50.json").then((coastline) => {
-    const lines = coastline.features.map((feature) => {
-      const cords = feature.geometry.coordinates;
+  import("./maps/coastline.simplified.json").then(({ default: coastline }) => {
+    const lines = coastline.map((feature) => {
+      const cords = feature.geom;
       const path = cords.map((point) =>
         mapToVec3(point[1], point[0], EARTH_RADIUS),
       );
